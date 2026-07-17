@@ -15,6 +15,44 @@ void displayInit()
     tft.setRotation(1);
 }
 
+void displayClear(uint16_t color)
+{
+    tft.fillScreen(color);
+}
+
+void displayText(
+    int x,
+    int y,
+    const String &text,
+    uint16_t color,
+    uint8_t size)
+{
+    tft.setCursor(x, y);
+    tft.setTextColor(color);
+    tft.setTextSize(size);
+    tft.print(text);
+}
+
+void displayRectangle(
+    int x,
+    int y,
+    int w,
+    int h,
+    uint16_t color)
+{
+    tft.drawRect(x, y, w, h, color);
+}
+
+void displayFillRectangle(
+    int x,
+    int y,
+    int w,
+    int h,
+    uint16_t color)
+{
+    tft.fillRect(x, y, w, h, color);
+}
+
 void displayBoot()
 {
     tft.fillScreen(ST77XX_BLACK);
