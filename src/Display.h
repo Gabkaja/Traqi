@@ -30,3 +30,35 @@ void displayFillRectangle(
     int h,
     uint16_t color
 );
+
+void displayDrawLine(
+    int x0,
+    int y0,
+    int x1,
+    int y1,
+    uint16_t color
+);
+
+void displayCircle(
+    int x,
+    int y,
+    int r,
+    uint16_t color
+);
+
+void displayFillCircle(
+    int x,
+    int y,
+    int r,
+    uint16_t color
+);
+void displayBitmapMask(
+    int x,
+    int y,
+    int w,
+    int h,
+    const uint8_t* mask,
+    uint16_t color,
+    int colStart,
+    int colEnd
+);

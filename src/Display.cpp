@@ -1,5 +1,6 @@
 #include "Display.h"
 #include "Config.h"
+#include "Colors.h"
 
 #include <SPI.h>
 #include <Adafruit_GFX.h>
@@ -81,3 +82,74 @@ void displayLoading(int percent)
 
     tft.fillRect(x + 1, y + 1, fill, h - 2, ST77XX_GREEN);
 }
+
+void displayDrawLine(
+    int x0,
+    int y0,
+    int x1,
+    int y1,
+    uint16_t color
+)
+{
+    tft.drawLine(x0, y0, x1, y1, color);
+}
+
+void displayCircle(
+    int x,
+    int y,
+    int r,
+    uint16_t color)
+{
+    tft.drawCircle(x,y,r,color);
+}
+
+void displayFillCircle(
+    int x,
+    int y,
+    int r,
+    uint16_t color)
+{
+    tft.fillCircle(x,y,r,color);
+}
+
+void displayBitmapMask(
+    int x,
+    int y,
+    int w,
+    int h,
+    const uint8_t* mask,
+    uint16_t color,
+    int colStart,
+    int colEnd)
+{
+    if (colStart < 0) colStart = 0;
+    if (colEnd > w) colEnd = w;
+    if (colStart >= colEnd) return;
+ 
+    int bytesPerRow = (w + 7) / 8;
+ 
+    tft.startWrite();
+ 
+    for (int row = 0; row < h; row++)
+    {
+        const uint8_t* rowPtr = mask + (row * bytesPerRow);
+ 
+        for (int col = colStart; col < colEnd; col++)
+        {
+            uint8_t byteVal = pgm_read_byte(rowPtr + (col >> 3));
+            uint8_t bitMask = 0x80 >> (col & 0x07);
+ 
+            if (byteVal & bitMask)
+            {
+                tft.writePixel(x + col, y + row, color);
+            }
+        }
+    }
+ 
+    tft.endWrite();
+}
+ 
+// Rysuje maskę bitową 1bpp (z PROGMEM) w zadanym kolorze, ale tylko dla
+// kolumn z przedziału [colStart, colEnd). Pozwala to odsłaniać bitmapę
+// stopniowo (np. animacja boot) bez przerysowywania całości co klatkę.
+// Format masek: MSB-first, każdy wiersz wyrównany do pełnego bajtu.

@@ -2,64 +2,74 @@
 #include "Input.h"
 #include "Display.h"
 #include "Config.h"
+#include "Colors.h"
+#include "Dog.h"
 
 static int selected = 0;
-static int lastSelected = -1;
 const char* menuItems[] =
 {
     "Play",
+    "Map",
     "Messages",
-    "Settings",
-    "About"
+    "Settings"
 };
-
-void drawItem(int index, bool selectedItem)
-{
-    int y = 80 + index * 30;
-
-    // czyścimy tylko jedną linię
-    displayFillRectangle(
-        15,
-        y,
-        250,
-        22,
-        COLOR_BLACK
-    );
-
-    String text;
-
-    if(selectedItem)
-        text = "> ";
-    else
-        text = "  ";
-
-    text += menuItems[index];
-
-    displayText(
-        20,
-        y,
-        text,
-        selectedItem ? COLOR_GREEN : COLOR_WHITE,
-        2
-    );
-}
 
 void MenuScreen::draw()
 {
     displayClear(COLOR_BLACK);
 
-    displayText(
-        35,
-        20,
-        "loQra",
-        COLOR_GREEN,
-        4
-    );
+    // ===== STATUS BAR =====
+
+    displayFillRectangle(0,0,320,24,COLOR_BLACK);
+
+    displayText(8,7,"Traqi",COLOR_GREEN,2);
+
+    displayText(245,8,"GPS",COLOR_GREEN,1);
+    displayText(275,8,"LoRa",COLOR_GREEN,1);
+
+    displayDrawLine(0,24,320,24,COLOR_DARKGRAY);
+
+    // ===== DOG PLACEHOLDER =====
+    dog.setMood(DogMood::Happy);
+    dog.draw(220,40);
+
+    // ===== MENU =====
+
+    int startY = 40;
 
     for(int i=0;i<4;i++)
-        drawItem(i, i==selected);
+    {
+        uint16_t bg=COLOR_BLACK;
+        uint16_t fg=COLOR_WHITE;
 
-    lastSelected = selected;
+        if(i==selected)
+        {
+            bg=COLOR_GREEN_BG;
+            fg=COLOR_GREEN;
+        }
+
+        displayFillRectangle(
+            10,
+            startY+i*30,
+            170,
+            26,
+            bg
+        );
+
+        String text = String("  ") + menuItems[i];
+
+        if(i==selected)
+            text = String("> ") + menuItems[i];
+
+        displayText(
+            18,
+            startY+6+i*30,
+            text,
+            fg,
+            2
+        );
+    }
+
 }
 
 void MenuScreen::update()
@@ -71,28 +81,24 @@ void MenuScreen::update()
         case InputEvent::UP:
 
             if(selected>0)
+            {
                 selected--;
+                draw();
+            }
 
             break;
 
         case InputEvent::DOWN:
 
             if(selected<3)
+            {
                 selected++;
+                draw();
+            }
 
             break;
 
         default:
-
-            return;
-    }
-
-    if(lastSelected!=selected)
-    {
-        drawItem(lastSelected,false);
-
-        drawItem(selected,true);
-
-        lastSelected=selected;
+            break;
     }
 }
