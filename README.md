@@ -1,4 +1,6 @@
-# **loQra**
+# **NEW NAME**
+
+# **Traqi**
 ---
 
 ## Table of Contents
@@ -8,16 +10,16 @@
     * [Hardware](#hardware)
     * [Software & Technologies](#software--technologies)
 
-An open-source, handheld LoRa-based terrain game.
+An open-source, handheld GPS and LoRa-based terrain game.
 
 ---
 
-## Current Release: v_beta 1.1
+## Current Release: v_beta 1.2
 
 ### Added
 * **Screen Framework:** Foundational rendering code for display testing.
-* **Animated Loading Bar:** Smooth boot-up sequence animation.
-* **Provisional Menu:** Core menu system with text-highlighting animations, fully controlled via analog joystick input.
+* **New boot animation:** Smooth boot-up sequence animation.
+* **[update] Provisional Menu has new look:** Core menu system with text-highlighting animations, fully controlled via analog joystick input.
 
 ---
 
