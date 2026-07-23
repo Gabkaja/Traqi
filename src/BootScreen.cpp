@@ -23,7 +23,7 @@ namespace
     // Total duration of the reveal animation. Purely time-based for now
     // (see BootScreen::getBootProgress) - replace with real init progress
     // later without touching anything else in this file.
-    constexpr uint32_t kBootAnimationDurationMs = 1800;
+    constexpr uint32_t kBootAnimationDurationMs = 2000;
 }
 
 BootScreen::BootScreen(Screen* nextScreen)

@@ -54,20 +54,6 @@ void displayFillRectangle(
     tft.fillRect(x, y, w, h, color);
 }
 
-void displayBoot()
-{
-    tft.fillScreen(ST77XX_BLACK);
-
-    tft.setTextColor(ST77XX_GREEN);
-    tft.setTextSize(4);
-
-    tft.setCursor(35, 35);
-    tft.println("loQra");
-
-    tft.setTextSize(2);
-    tft.setCursor(55, 85);
-    tft.println("booting...");
-}
 
 void displayLoading(int percent)
 {
