@@ -1,25 +1,32 @@
-# **NEW NAME**
-
-# **Traqi**
----
-
-## Table of Contents
-* [Current Release](#current-release-v_beta-11)
-* [Hardware Schematics](#hardware-schematics)
-* [Components Used](#components-used)
-    * [Hardware](#hardware)
-    * [Software & Technologies](#software--technologies)
+# Traqi
 
 An open-source, handheld GPS and LoRa-based terrain game.
 
 ---
 
-## Current Release: v_beta 1.2
+## Table of Contents
+* [Current Release](#current-release-v13-beta)
+* [Hardware Schematics](#hardware-schematics)
+* [Components Used](#components-used)
+    * [Hardware](#hardware)
+    * [Software & Technologies](#software--technologies)
+
+---
+
+## Current Release: v1.3-beta
+
+### Added
+* **Footer:** Navigation information added.
+
+### Fixed
+* **Menu animation:** Fixed screen flickering issue.
+
+## v1.2-beta
 
 ### Added
 * **Screen Framework:** Foundational rendering code for display testing.
-* **New boot animation:** Smooth boot-up sequence animation.
-* **[update] Provisional Menu has new look:** Core menu system with text-highlighting animations, fully controlled via analog joystick input.
+* **Boot animation:** Smooth boot-up sequence animation.
+* **Provisional Menu:** Core menu system with text-highlighting animations, fully controlled via analog joystick input.
 
 ---
 
