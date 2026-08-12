@@ -9,4 +9,6 @@ public:
     void draw() override;
 
     void update() override;
+    
+    void onEnter() override;
 };

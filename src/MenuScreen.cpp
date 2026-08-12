@@ -5,6 +5,11 @@
 #include "Colors.h"
 #include "Footer.h"
 
+#include "GameSelectScreen.h"
+#include "ScreenManager.h"
+
+extern GameSelectScreen gameSelectScreen;
+
 static int selected = 0;
 static int previousSelected = 0;
 
@@ -133,9 +138,24 @@ void MenuScreen::update()
 
         break;
 
+        case InputEvent::RIGHT:
+
+            if(selected == 0)
+            {
+                screenManagerSet(&gameSelectScreen);
+            }
+
+        break;
+
 
 
         default:
         break;
     }
+}
+
+void MenuScreen::onEnter()
+{
+    gameSelectScreen.setPreviousScreen(this);
+    draw();
 }
