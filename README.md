@@ -49,7 +49,7 @@ An open-source, handheld GPS and LoRa-based terrain game.
 
 Provisional wiring layout for the joystick and screen integration:
 
-![Hardware Wiring Diagram](diagrams/loqra.png)
+![Hardware Wiring Diagram](diagrams/traqi.png)
 
 ---
 
