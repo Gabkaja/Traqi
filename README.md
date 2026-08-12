@@ -47,7 +47,7 @@ An open-source, handheld GPS and LoRa-based terrain game.
 
 ## Hardware Schematics
 
-Provisional wiring layout for the joystick and screen integration:
+Provisional wiring layout for the joystick, screen and GPS integration:
 
 ![Hardware Wiring Diagram](diagrams/traqi.png)
 
@@ -59,9 +59,11 @@ Provisional wiring layout for the joystick and screen integration:
 * **Microcontroller:** ESP32-S3 N16R8 44-Pin Type-C Development Board
 * **Display:** 1.9 inch TFT IPS LCD Display 170x320 ST7789V SPI
 * **Input:** PS2 Analog Joystick Module KY-023 (XY Joystick)
+* **GPS:** ATGM336H GPS Module (UART)
 
 ### Software & Technologies
 * **Development Environment:** Arduino IDE 2.3.10
 * **Core Framework:** Arduino-ESP32 Core (Espressif ESP32 Board Package)
 * **Graphics Libraries:** Adafruit GFX Library, Adafruit ST7789 Library
+* **GPS Library:** TinyGPSPlus
 * **Protocols & Architecture:** SPI Communication Interface, C++ Embedded Firmware Architecture
